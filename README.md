@@ -1,30 +1,14 @@
-# Instalação
-
-Para iniciar no repositório de questões, precisamos configurar. Para isto siga os passos abaixo:
-
-1. Instalar o `esbuild` e o `readline-sync` e o `tsx`:
-```bash
-npm install esbuild readline-sync tsx
-```
-
-2. Como o motor das questões é feito em python, precisamos instalar o `pipx` para instalar o tko
-```bash
-sudo apt update
-sudo apt install pipx
-pipx install tko
-```
-
-# Baixando questões
+# Selecionar questões
 
 Você consegue navegar pela lista de questões com o comando abaixo no terminal:
 ```bash
 tko open .
 ```
 
-e o que você clicar no problema que você selecionou. O código deste código será baixado em src.
+Se você clicar na questão que selecionou o código do problema será baixado na pasta `src`.
 
 # Fazendo as questões
-Procure na pasta `src` a pasta da questão baixada. Dentro do arquivo você tem o arquivo `draft.ts`, onde você irá adicionar sua solução.
+Procure na pasta `src` a pasta da questão baixada. Dentro da pasta da questão você tem o arquivo `draft.ts`, onde você irá adicionar sua solução.
 
 ## Dicas
 
