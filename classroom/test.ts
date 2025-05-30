@@ -1,5 +1,7 @@
 import { execSync } from 'child_process';
 import * as fs from 'fs'; // Importa o módulo 'fs'
+import { readdirSync, statSync } from 'fs';
+import { join } from 'path';
 
 let passed = 0;
 let total = 0;
@@ -77,11 +79,17 @@ function run_tko(folder: string) {
     }
 }
 
-run_tko('src/media');
-run_tko('src/leds');
-run_tko('src/traficantes');
+// Lê todas as entradas da pasta raiz src
+const root = 'src';
+const entries = readdirSync(root);
 
-
+// Filtra apenas subpastas e executa a função
+entries.forEach(entry => {
+  const fullPath = join(root, entry);
+  if (statSync(fullPath).isDirectory()) {
+    run_tko(fullPath);
+  }
+});
 
 // Resultado final
 console.log(
