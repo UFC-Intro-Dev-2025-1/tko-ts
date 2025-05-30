@@ -18,10 +18,11 @@ let textoInicial = input();
 console.log(textoInicial);
 ```
 
-- Para quebrar linha:
+- Para receber vários inputs (em várias linhas) repita o `input()`:
 ```typescript
-const linhas = texto.split(/\r?\n/);
-//Isso divide corretamente tanto \n (Unix/Linux/macOS) quanto \r\n (Windows).
+const a = input(); //1ª linha 
+const b = input(); //2ª linha 
+const c = input(); //3ª linha 
 ```
 
 - Para navegar nas pastas use no terminal `cd nomedapasta` para entrar numa pasta e `cd ..` para sair de uma pasta e ir para o nível acima.
