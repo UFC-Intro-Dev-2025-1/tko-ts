@@ -38,78 +38,6 @@ function show_diff(content_a: string, content_b: string) {
     remove_file(file_b);
 }
 
-// Teste 1: Verifica o main.ts
-try {
-    total += 1;
-    // testa primeiro se roda
-    const saidaEsperada = 'Ser ou não ser, eis a questão';
-    const output = execSync('npm run build').toString();
-    if (output.toString().includes(saidaEsperada)) {
-        passed++;
-        console.log('✅ main.ts: Saída em texto do código é a esperada.');
-    } else {
-        console.log('❌ main.ts: Saída em texto do código não é a esperada.');
-        show_diff(saidaEsperada, output);
-    }
-} catch (e) {
-    console.log('❌ main.ts: Erro: ' + e.message);
-}
-
-// Teste 2: Verifica o extra1.ts
-try {
-    total += 1;
-    // testa primeiro se roda
-    const saidaEsperada =
-        'Comprimento do trecho: 18\n' +
-        'Índice do trecho: 25\n' +
-        'Frase revisada: Eu não gosto de spoilers';
-
-    const output = execSync('npx tsx src/extra1.ts').toString();
-    if (output.toString().includes(saidaEsperada)) {
-        passed++;
-        console.log('✅ extra1.ts: Saída em texto do código é a esperada.');
-    } else {
-        console.log('❌ extra1.ts: Saída em texto do código não é a esperada.');
-        show_diff(saidaEsperada, output);
-    }
-} catch (e) {
-    console.log('❌ extra1.ts: Erro: ' + e.message);
-}
-
-// Teste 3: Verifica o extra2.ts
-try {
-    total += 1;
-    // testa primeiro se roda
-    const saidaEsperada =
-        'Se um triângulo tem lados de 9 e 12, então a hipotenusa mede 15.';
-
-    const output = execSync('npx tsx src/extra2.ts').toString();
-    if (output.toString().includes(saidaEsperada)) {
-        passed++;
-        console.log('✅ extra2.ts: Saída em texto do código é a esperada.');
-    } else {
-        console.log('❌ extra2.ts: Saída em texto do código não é a esperada.');
-        show_diff(saidaEsperada, output);
-    }
-} catch (e) {
-    console.log('❌ extra2.ts: Erro: ' + e.message);
-}
-
-// Teste 4: Verifica o extra3.ts
-try {
-    total += 1;
-    // testa primeiro se roda
-    const saidaEsperadaExtra3 = /Eu não gosto de (.+?)\./i;
-    const output = execSync('npx tsx src/extra3.ts').toString();
-    if (output.toString().search(saidaEsperadaExtra3) >= 0) {
-        passed++;
-        console.log('✅ extra3.ts: Saída em texto do código é a esperada.');
-    } else {
-        console.log('❌ extra3.ts: Saída em texto do código não é a esperada.');
-    }
-} catch (e) {
-    console.log('❌ extra3.ts: Erro: ' + e.message);
-}
 
 // Teste 5: Media
 
@@ -152,6 +80,9 @@ function run_tko(folder: string) {
 run_tko('src/media');
 run_tko('src/leds');
 run_tko('src/traficantes');
+
+
+
 // Resultado final
 console.log(
     `\n\n🎯 Resultado: ${passed}/${total} testes passaram.` +

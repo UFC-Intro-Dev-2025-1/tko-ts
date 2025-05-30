@@ -1,8 +1,0 @@
-{
-    "patches": [
-        {
-            "label": "2025-05-29_04-47-19",
-            "content": "const input = () => \"\"; // MODO_TESTE\nexport {};\n\nfunction main() {\n    console.log(\"qxcode\");\n}\nmain();\n"
-        }
-    ]
-}
