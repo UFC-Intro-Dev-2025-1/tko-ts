@@ -18,7 +18,7 @@ jobs:
       uses: classroom-resources/autograding-command-grader@v1
       with:
         test-name: Validação Tarefa Strings
-        setup-command: ''
+        setup-command: sudo apt update && sudo apt install -y pipx && pipx install tko
         command: npm test
         timeout: 10
         max-score: 100
