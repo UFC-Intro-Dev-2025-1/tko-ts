@@ -40,44 +40,34 @@ function show_diff(content_a: string, content_b: string) {
     remove_file(file_b);
 }
 
-
-// Teste 5: Media
-
 function run_tko(folder: string) {
     try {
         total += 1;
         // testa primeiro se roda
         const output = execSync(
-            `tko run -d ${folder}/cases.tio ${folder}/draft.ts`
+            // eval mostra tempo, execuções e tamanho do arquivo
+            // compact evita mostrar nomes dos testes
+            //--none(nenhum diff), --all(todos os diffs), default(first diff)
+            `tko -w 140 run -d ${folder} --eval --compact --none`
         ).toString();
         let lines = output.split('\n');
-        if (output.split('\n').length === 3) {
+        lines.shift()
+        lines.pop()
+        let resume = lines[0]
+        let parts: string[] = resume.split(" ")
+        if (parts[parts.length - 1] == "100%") {
             passed++;
-            console.log(`✅ ${folder}: Saída em texto do código é a esperada.`);
-            console.log(
-                lines
-                    .slice(1, -1)
-                    .map((x) => '   ' + x)
-                    .join('\n')
-            );
+            console.log(`✅ ${folder}: Saída do código é a esperada.`);
+            console.log(resume)
         } else {
-            console.log(
-                `❌ ${folder}: Saída em texto do código não é a esperada.`
-            );
-            if (!diff_showed) {
-                diff_showed = true;
-                console.log(
-                    lines
-                        .slice(1, -1)
-                        .map((x) => '   ' + x)
-                        .join('\n')
-                );
-            }
+            console.log( `❌ ${folder}: Saída do código não é a esperada.` );
+            console.log(lines.join("\n"));
         }
     } catch (e) {
-        console.log(`❌ ${folder}: Erro: ` + e.message);
+        console.log(`❌ ${folder}: Erro: ` + e.message + e.output);
     }
 }
+
 
 // Lê todas as entradas da pasta raiz src
 const root = 'src';
